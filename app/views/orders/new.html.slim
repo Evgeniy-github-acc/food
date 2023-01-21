@@ -1,0 +1,9 @@
+h1 = 'New Order'
+
+.ingredients
+  = form_with url: orders_path(@order) do |form|
+    = form.collection_check_boxes :ingredient_ids, @ingredients, :id, :name, include_hidden: false do |i|
+      p
+        = i.check_box
+        = i.label
+    = form.submit 'Send Order'  

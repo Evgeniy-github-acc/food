@@ -9,7 +9,7 @@
 file = Rails.root.join('storage', 'menu.yml')
 data = YAML::load_file(file)
 
-data['ingredients'].each{ |name| Ingridient.find_or_create_by!(name: name) }
+data['ingredients'].each{ |name| Ingridient.find_or_create_by(name: name) }
 
 data['dishes'].each do |item|
   dish = Dish.find_or_create_by(name: item['name']) do |d|
