@@ -1,6 +1,11 @@
 class OrdersController < ApplicationController
   before_action :load_ingredients, only: %i[new]
   
+  def dish_counts
+    @dish_counts = Order.dish_counts
+    render json: @dish_counts
+  end
+  
   def create
     @order = Order.new
     @order.dishes = Dish.exclude_ingredients(params[:ingredient_ids])
